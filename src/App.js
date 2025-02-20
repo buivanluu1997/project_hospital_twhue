@@ -1,20 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-import HeaderComponent from "./component/HeaderComponent";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min';
-import {Route, Routes} from "react-router-dom";
-import MedicalBooking from "./component/MedicalBooking";
+import { Routes, Route } from 'react-router-dom';
+import { HomePage } from './pages/HomePage';
 
 function App() {
     return (
-        <>
-            <HeaderComponent/>
+        <div className="min-h-screen bg-[#FFFFFF]">
             <Routes>
-                <Route path="/booking" element={<MedicalBooking/>}/>
-            </Routes>
-        </>
+                <Route
+                    path="/"
+                    element={<HomePage />}
+                />
+            </Routes >
+        </div >
     );
-}
+};
 
 export default App;
