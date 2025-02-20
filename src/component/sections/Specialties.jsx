@@ -1,5 +1,6 @@
 import React from 'react';
-import BsGiaDinh from '../../assets/images/bs_giadinh.webp';
+import {BsGiaDinh, TieuHoaGanMat, NoiTongQuat, NoiTiet, DaLieu, TimMach,
+    ThanKinh, NoiCoXuongKhop,TaiMuiHong, Mat} from "../../helpers/Image"
 
 const specialties = [
     {
@@ -9,47 +10,47 @@ const specialties = [
     },
     {
         title: "Tiêu hóa gan mật",
-        icon: BsGiaDinh,
+        icon: TieuHoaGanMat,
         ref: ""
     },
     {
         title: "Nội tổng quát",
-        icon: BsGiaDinh,
+        icon: NoiTongQuat,
         ref: ""
     },
     {
         title: "Nội tiết",
-        icon: BsGiaDinh,
+        icon: NoiTiet,
         ref: ""
     },
     {
         title: "Da liễu",
-        icon: BsGiaDinh,
+        icon: DaLieu,
         ref: ""
     },
     {
         title: "Nội tim mạch",
-        icon: BsGiaDinh,
+        icon: TimMach,
         ref: ""
     },
     {
         title: "Nội thần kinh",
-        icon: BsGiaDinh,
+        icon: ThanKinh,
         ref: ""
     },
     {
         title: "Nội cơ xương khớp",
-        icon: BsGiaDinh,
+        icon: NoiCoXuongKhop,
         ref: ""
     },
     {
         title: "Tai mũi họng",
-        icon: BsGiaDinh,
+        icon: TaiMuiHong,
         ref: ""
     },
     {
         title: "Mắt",
-        icon: BsGiaDinh,
+        icon: Mat,
         ref: ""
     },
 ];

@@ -68,15 +68,17 @@ export function MedicalBooking() {
             <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
 
                 <Form className="container">
-                    <h3 className="text-center">Đặt lịch thăm khám tại Bệnh viện Quốc tế Trung Ương Huế</h3>
+                    <h2 className="text-center">Đặt lịch thăm khám tại Bệnh viện Quốc tế Trung Ương Huế</h2>
 
-                    <h6>Thông tin cá nhân:</h6>
+                    <h5>Thông tin cá nhân:</h5>
                     <div className="row">
                         <div className="col-md-6 mb-3">
                             <label className="form-label">Họ và tên <sup className="text-danger">*</sup></label>
                             <Field type="text" name="fullName" className="form-control" placeholder="Nhập họ và tên"
                                    autoComplete="off"/>
-                            <ErrorMessage name="fullName" className="text-danger" component="div"/>
+                            <small className="text-danger">
+                                <ErrorMessage name="fullName" component="div"/>
+                            </small>
                         </div>
 
                         <div className="col-md-6 mb-3">
@@ -84,7 +86,7 @@ export function MedicalBooking() {
                                 className="text-danger">*</sup></label>
                             <Field type="text" name="identityNum" className="form-control" placeholder="Nhập số CCCD"
                                    autoComplete="off"/>
-                            <ErrorMessage name="identityNum" className="text-danger" component="div"/>
+                            <small><ErrorMessage name="identityNum" className="text-danger" component="div"/></small>
                         </div>
                     </div>
 
@@ -93,7 +95,7 @@ export function MedicalBooking() {
                         <div className="col-md-6 mb-3">
                             <label className="form-label">Ngày sinh <sup className="text-danger">*</sup></label>
                             <Field type="date" name="dayOfBirth" className="form-control" autoComplete="off"/>
-                            <ErrorMessage name="dayOfBirth" className="text-danger" component="div"/>
+                            <small><ErrorMessage name="dayOfBirth" className="text-danger" component="div"/></small>
                         </div>
 
                         <div className="col-md-6 mb-3">
@@ -103,7 +105,7 @@ export function MedicalBooking() {
                                 <option value="Nam">Nam</option>
                                 <option value="Nữ">Nữ</option>
                             </Field>
-                            <ErrorMessage name="gender" className="text-danger" component="div"/>
+                            <small><ErrorMessage name="gender" className="text-danger" component="div"/></small>
                         </div>
                     </div>
 
@@ -115,7 +117,7 @@ export function MedicalBooking() {
                                 <option value="Việt Nam">Việt Nam</option>
                                 <option value="Lào">Lào</option>
                             </Field>
-                            <ErrorMessage name="nationalityCode" component="div" className="text-danger"/>
+                            <small><ErrorMessage name="nationalityCode" component="div" className="text-danger"/></small>
                         </div>
 
                         <div className="col-md-6 mb-3">
@@ -125,7 +127,7 @@ export function MedicalBooking() {
                                 <option value="Kinh">Kinh</option>
                                 <option value="Tày">Tày</option>
                             </Field>
-                            <ErrorMessage name="ethnicCode" component="div" className="text-danger"/>
+                            <small><ErrorMessage name="ethnicCode" component="div" className="text-danger"/></small>
                         </div>
                     </div>
 
@@ -149,7 +151,7 @@ export function MedicalBooking() {
                                 className="text-danger">*</sup></label>
                             <Field type="text" name="parentName" className="form-control"
                                    placeholder="Nhập họ và tên người thân"/>
-                            <ErrorMessage name="parentName" component="div" className="text-danger"/>
+                            <small><ErrorMessage name="parentName" component="div" className="text-danger"/></small>
                         </div>
 
                         <div className="col-md-6 mb-3">
@@ -157,7 +159,7 @@ export function MedicalBooking() {
                                 className="text-danger">*</sup></label>
                             <Field as="textarea" name="regLocation" className="form-control"
                                    placeholder="Nhập địa chỉ thường trú" rows="2"/>
-                            <ErrorMessage name="regLocation" component="div" className="text-danger"/>
+                            <small><ErrorMessage name="regLocation" component="div" className="text-danger"/></small>
                         </div>
                     </div>
 
@@ -165,7 +167,7 @@ export function MedicalBooking() {
                         <div className="col-md-6 mb-3">
                             <label className="form-label">Số điện thoại <sup className="text-danger">*</sup></label>
                             <Field type="text" name="phone" className="form-control" placeholder="Nhập số điện thoại"/>
-                            <ErrorMessage name="phone" component="div" className="text-danger"/>
+                            <small><ErrorMessage name="phone" component="div" className="text-danger"/></small>
                         </div>
 
                         <div className="col-md-6 mb-3">
@@ -175,7 +177,7 @@ export function MedicalBooking() {
                                 <option value="Công an">Công an</option>
                                 <option value="Giáo viên">Giáo viên</option>
                             </Field>
-                            <ErrorMessage name="professionCode" component="div" className="text-danger"/>
+                            <small><ErrorMessage name="professionCode" component="div" className="text-danger"/></small>
                         </div>
                     </div>
 
@@ -187,7 +189,7 @@ export function MedicalBooking() {
                                 <option value="Huế">Huế</option>
                                 <option value="Đà Nẵng">Đà Nẵng</option>
                             </Field>
-                            <ErrorMessage name="provinceCode" component="div" className="text-danger"/>
+                            <small><ErrorMessage name="provinceCode" component="div" className="text-danger"/></small>
                         </div>
 
                         <div className="col-md-4 mb-3">
@@ -197,7 +199,7 @@ export function MedicalBooking() {
                                 <option value="Phú Xuân">Phú Xuân</option>
                                 <option value="Thuận Hoá">Thuận Hoá</option>
                             </Field>
-                            <ErrorMessage name="districtCode" component="div" className="text-danger"/>
+                            <small><ErrorMessage name="districtCode" component="div" className="text-danger"/></small>
                         </div>
 
                         <div className="col-md-4 mb-3">
@@ -207,7 +209,7 @@ export function MedicalBooking() {
                                 <option value="An Đông">An Đông</option>
                                 <option value="An Tây">An Tây</option>
                             </Field>
-                            <ErrorMessage name="wardCode" component="div" className="text-danger"/>
+                            <small><ErrorMessage name="wardCode" component="div" className="text-danger"/></small>
                         </div>
                     </div>
                     <hr/>
@@ -218,7 +220,7 @@ export function MedicalBooking() {
                             <option value="Ung bướu">Ung bướu</option>
                             <option value="Nhi khoa">Nhi khoa</option>
                         </Field>
-                        <ErrorMessage name="clinicCode" component="div" className="text-danger"/>
+                        <small><ErrorMessage name="clinicCode" component="div" className="text-danger"/></small>
                     </div>
 
                     {/* Trường ẩn */}
@@ -236,7 +238,7 @@ export function MedicalBooking() {
                             className="form-control"
                             style={{height: "80px", resize: "vertical"}}
                         />
-                        <ErrorMessage name="noteTn" component="div" className="text-danger"/>
+                        <small><ErrorMessage name="noteTn" component="div" className="text-danger"/></small>
                     </div>
 
                     <div className="mb-3">
@@ -248,7 +250,7 @@ export function MedicalBooking() {
                             <option value="1">Thanh toán tại quầy</option>
                             <option value="2">Thanh toán ngay bằng QRCode</option>
                         </Field>
-                        <ErrorMessage name="paymentMethod" component="div" className="text-danger"/>
+                        <small><ErrorMessage name="paymentMethod" component="div" className="text-danger"/></small>
                     </div>
 
 
