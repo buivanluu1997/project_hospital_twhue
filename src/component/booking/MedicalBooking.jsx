@@ -64,13 +64,13 @@ export function MedicalBooking() {
 
     return (
         <>
-            <div className="h-20"></div>
+            <div className="h-16"></div>
             <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
 
                 <Form className="container">
                     <h2 className="text-center">Đặt lịch thăm khám tại Bệnh viện Quốc tế Trung Ương Huế</h2>
 
-                    <h5>Thông tin cá nhân:</h5>
+                    <h5 className="mt-4">Thông tin cá nhân:</h5>
                     <div className="row">
                         <div className="col-md-6 mb-3">
                             <label className="form-label">Họ và tên <sup className="text-danger">*</sup></label>
@@ -117,7 +117,8 @@ export function MedicalBooking() {
                                 <option value="Việt Nam">Việt Nam</option>
                                 <option value="Lào">Lào</option>
                             </Field>
-                            <small><ErrorMessage name="nationalityCode" component="div" className="text-danger"/></small>
+                            <small><ErrorMessage name="nationalityCode" component="div"
+                                                 className="text-danger"/></small>
                         </div>
 
                         <div className="col-md-6 mb-3">
