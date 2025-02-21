@@ -1,8 +1,11 @@
 import React from "react";
+import { useState } from "react";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export function MedicalBooking() {
+    const [captchaValue, setCaptchaValue] = useState(null);
 
     const initialValues = {
         "fullName": "",
@@ -29,11 +32,7 @@ export function MedicalBooking() {
 
 
     const validationSchema = Yup.object({
-        fullName: Yup.string()
-            .matches(/^[\p{L} ]+$/u, "Tên không được chứa số hoặc ký tự đặc biệt")
-            .min(2, "Tên quá ngắn")
-            .max(50, "Tên quá dài")
-            .required("Họ và tên không được để trống"),
+        fullName: Yup.string().required("Họ và tên không được để trống"),
         identityNum: Yup.string().required("Số CCCD không được để trống"),
         dayOfBirth: Yup.date().required("Ngày sinh không được để trống"),
         gender: Yup.string().required("Giới tính không được để trống"),
@@ -59,12 +58,16 @@ export function MedicalBooking() {
     })
 
     const handleSubmit = (values) => {
-
+        if (!captchaValue) {
+            alert("Vui lòng xác nhận bạn không phải là robot!");
+            return;
+        }
+        console.log("Dữ liệu hợp lệ:", values);
     }
 
     return (
         <>
-            <div className="h-16"></div>
+            <div className="h-27"></div>
             <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
 
                 <Form className="container">
@@ -136,13 +139,13 @@ export function MedicalBooking() {
                         <div className="col-md-6 mb-3">
                             <label className="form-label">Ngày cấp CCCD <sup className="text-danger">*</sup></label>
                             <Field type="date" name="provDate" className="form-control"/>
-                            <ErrorMessage name="provDate" component="div" className="text-danger"/>
+                            <small><ErrorMessage name="provDate" component="div" className="text-danger"/></small>
                         </div>
 
                         <div className="col-md-6 mb-3">
                             <label className="form-label">Ngày hết hạn CCCD <sup className="text-danger">*</sup></label>
                             <Field type="date" name="outOfDate" className="form-control"/>
-                            <ErrorMessage name="outOfDate" component="div" className="text-danger"/>
+                            <small><ErrorMessage name="outOfDate" component="div" className="text-danger"/></small>
                         </div>
                     </div>
 
@@ -254,6 +257,13 @@ export function MedicalBooking() {
                         <small><ErrorMessage name="paymentMethod" component="div" className="text-danger"/></small>
                     </div>
 
+                    {/* Google reCAPTCHA */}
+                    <div className="d-flex justify-content-center mt-3">
+                        <ReCAPTCHA
+                            sitekey="6LdCy90qAAAAAG0gvTUFm5KkiYWwyTvP-9iJgZNV"   /*"YOUR_SITE_KEY"*/
+                            onChange={(value) => setCaptchaValue(value)}
+                        />
+                    </div>
 
                     <div className="text-center mt-3">
                         <button type="submit" className="btn btn-primary">Gửi Đăng Ký</button>

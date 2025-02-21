@@ -1,18 +1,12 @@
+import LogoFooter from "./logo/LogoFooter";
+
 export const Footer = () => {
     return (
         <footer className="bg-gradient-to-b from-white to-gray-50 ">
             <div className="mx-auto w-full max-w-7xl px-6 py-12 lg:py-16">
                 <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
                     <div className="space-y-4">
-                        <a href="/" className="flex items-center space-x-3">
-                            <img src="/api/placeholder/40/40" alt="Logo" className="h-10 w-10 rounded-lg" />
-                            <span className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                Flowbite
-                            </span>
-                        </a>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
-                            BỆNH VIỆN TRUNG ƯƠNG
-                        </p>
+                        <LogoFooter/>
                     </div>
 
                     <div className="space-y-4">
