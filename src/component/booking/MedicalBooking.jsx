@@ -1,11 +1,23 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useState } from "react";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import ReCAPTCHA from "react-google-recaptcha";
+import {getCategories} from "../../service/Categories";
 
 export function MedicalBooking() {
     const [captchaValue, setCaptchaValue] = useState(null);
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const list = await getCategories();
+            console.log("================list===========");
+            console.log(list.data)
+            setCategories(list.data);
+        }
+        fetchData();
+    },[])
 
     const initialValues = {
         "fullName": "",
@@ -221,8 +233,12 @@ export function MedicalBooking() {
                         <label className="form-label">Chuyên khoa <sup className="text-danger">*</sup></label>
                         <Field as="select" name="clinicCode" className="form-select">
                             <option value="">-----Chọn-----</option>
-                            <option value="Ung bướu">Ung bướu</option>
-                            <option value="Nhi khoa">Nhi khoa</option>
+                            {/*<option value="Ung bướu">Ung bướu</option>
+                            <option value="Nhi khoa">Nhi khoa</option>*/}
+
+                            <option value={categories?.[0]?.maKhoa || ""}>
+                                {categories?.[0]?.tenKhoa || "Chưa có dữ liệu"}
+                            </option>
                         </Field>
                         <small><ErrorMessage name="clinicCode" component="div" className="text-danger"/></small>
                     </div>
@@ -258,15 +274,16 @@ export function MedicalBooking() {
                     </div>
 
                     {/* Google reCAPTCHA */}
-                    <div className="d-flex justify-content-center mt-3">
+                    <div className="mb-3 d-flex justify-content-center">
                         <ReCAPTCHA
-                            sitekey="6LdCy90qAAAAAG0gvTUFm5KkiYWwyTvP-9iJgZNV"   /*"YOUR_SITE_KEY"*/
+                            sitekey="6LdCy90qAAAAAG0gvTUFm5KkiYWwyTvP-9iJgZNV" /*"YOUR_SITE_KEY"*/
                             onChange={(value) => setCaptchaValue(value)}
+                            className="shadow-sm"
                         />
                     </div>
 
                     <div className="text-center mt-3">
-                        <button type="submit" className="btn btn-primary">Gửi Đăng Ký</button>
+                        <button type="submit" className="btn btn-primary">Đăng Ký</button>
                     </div>
                 </Form>
             </Formik>
