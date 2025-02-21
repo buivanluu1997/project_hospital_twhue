@@ -26,6 +26,7 @@ import {
     PhoneIcon,
     PlayCircleIcon
 } from '@heroicons/react/20/solid';
+import LogoHeader from "./logo/LogoHeader";
 
 const products = [
     { name: 'Trung Ương Quốc Tế 1', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
@@ -53,14 +54,9 @@ export function Header() {
     return (
         <header className="fixed z-30 w-full bg-white shadow">
             <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
-                <div className="flex lg:flex-1">
+                <div className="flex lg:flex-1 ">
                     <a href="#" className="-m-1.5 p-1.5">
-                        <span className="sr-only">Your Company</span>
-                        <img
-                            alt=""
-                            src="https://tailwindui.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                            className="h-8 w-auto"
-                        />
+                        <LogoHeader/>
                     </a>
                 </div>
                 <div className="flex lg:hidden">
