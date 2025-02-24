@@ -133,18 +133,18 @@ export function Header() {
                         </PopoverPanel>
                     </Popover>
 
-                    <a href="#" className="text-sm/6 font-semibold text-gray-900">
+                    <a href="#" className="text-base leading-6 font-semibold text-gray-900" style={{ textDecoration: "none" }}>
                         Tra cứu kết quả khám
                     </a>
-                    <a href="#" className="text-sm/6 font-semibold text-gray-900">
+                    <a href="#" className="text-base leading-6 font-semibold text-gray-900" style={{ textDecoration: "none" }}>
                         Tin tức
                     </a>
-                    <a href="#" className="text-sm/6 font-semibold text-gray-900">
+                    <a href="#" className="text-base leading-6 font-semibold text-gray-900" style={{ textDecoration: "none" }}>
                         Hướng dẫn
                     </a>
                 </PopoverGroup>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <a href="#" className="text-sm/6 font-semibold text-gray-900">
+                    <a href="#" className="text-base leading-6 font-semibold text-gray-900" style={{ textDecoration: "none" }}>
                         Log in <span aria-hidden="true">→</span>
                     </a>
                 </div>
@@ -154,7 +154,7 @@ export function Header() {
                 <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                     <div className="flex items-center justify-between">
                         <a href="#" className="-m-1.5 p-1.5">
-                            <LogoHeader /> {/* Sử dụng LogoHeader thay vì img mặc định */}
+                            <LogoHeader />
                         </a>
                         <button
                             type="button"
