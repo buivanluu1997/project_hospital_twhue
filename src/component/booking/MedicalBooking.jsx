@@ -3,13 +3,14 @@ import { useState } from "react";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import ReCAPTCHA from "react-google-recaptcha";
+import styles from '../booking/MedicalBooking.module.css'
 import {getCategories} from "../../service/Categories";
 
 export function MedicalBooking() {
     const [captchaValue, setCaptchaValue] = useState(null);
     const [categories, setCategories] = useState([]);
 
-    useEffect(() => {
+    /*useEffect(() => {
         const fetchData = async () => {
             const list = await getCategories();
             console.log("================list===========");
@@ -17,7 +18,7 @@ export function MedicalBooking() {
             setCategories(list.data);
         }
         fetchData();
-    },[])
+    },[])*/
 
     const initialValues = {
         "fullName": "",
@@ -79,54 +80,66 @@ export function MedicalBooking() {
 
     return (
         <>
-            <div className="h-27"></div>
+            <div className="h-[60px]"></div>
             <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
 
                 <Form className="container">
-                    <h2 className="text-center">Đặt lịch thăm khám tại Bệnh viện Quốc tế Trung Ương Huế</h2>
+                    <h2 className={styles.textCenter}>Đặt lịch thăm khám tại Bệnh viện Quốc tế Trung Ương Huế</h2>
 
-                    <h5 className="mt-4">Thông tin cá nhân:</h5>
                     <div className="row">
                         <div className="col-md-6 mb-3">
-                            <label className="form-label">Họ và tên <sup className="text-danger">*</sup></label>
+                            <label className={styles.formLabel}>Họ và tên <sup
+                                className={styles.textDanger}>*</sup></label>
                             <Field type="text" name="fullName" className="form-control" placeholder="Nhập họ và tên"
                                    autoComplete="off"/>
                             <small className="text-danger">
                                 <ErrorMessage name="fullName" component="div"/>
                             </small>
                         </div>
-
                         <div className="col-md-6 mb-3">
-                            <label className="form-label">Số căn cước công dân <sup
-                                className="text-danger">*</sup></label>
-                            <Field type="text" name="identityNum" className="form-control" placeholder="Nhập số CCCD"
-                                   autoComplete="off"/>
-                            <small><ErrorMessage name="identityNum" className="text-danger" component="div"/></small>
+                            <label className={styles.formLabel}>Giới tính <sup
+                                className={styles.textDanger}>*</sup></label>
+                            {/*<Field as="select" name="gender" className="form-control">
+                                <option value="">-----Chọn-----</option>
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                            </Field>*/}
+                            <div style={{display: "flex", gap: "20px"}}>
+                                <label className={styles.radioLabel}>
+                                    <Field type="radio" name="gender" value="Nam" className={styles.radioInput}/> Nam
+                                </label>
+                                <label className={styles.radioLabel}>
+                                    <Field type="radio" name="gender" value="Nữ" className={styles.radioInput}/> Nữ
+                                </label>
+                            </div>
+                            <small><ErrorMessage name="gender" className="text-danger" component="div"/></small>
                         </div>
+
                     </div>
 
 
                     <div className="row">
                         <div className="col-md-6 mb-3">
-                            <label className="form-label">Ngày sinh <sup className="text-danger">*</sup></label>
+                            <label className={styles.formLabel}>Ngày sinh <sup
+                                className={styles.textDanger}>*</sup></label>
                             <Field type="date" name="dayOfBirth" className="form-control" autoComplete="off"/>
                             <small><ErrorMessage name="dayOfBirth" className="text-danger" component="div"/></small>
                         </div>
 
                         <div className="col-md-6 mb-3">
-                            <label className="form-label">Giới tính <sup className="text-danger">*</sup></label>
-                            <Field as="select" name="gender" className="form-control">
-                                <option value="">-----Chọn-----</option>
-                                <option value="Nam">Nam</option>
-                                <option value="Nữ">Nữ</option>
-                            </Field>
-                            <small><ErrorMessage name="gender" className="text-danger" component="div"/></small>
+                            <label className={styles.formLabel}>Số căn cước công dân <sup
+                                className={styles.textDanger}>*</sup></label>
+                            <Field type="text" name="identityNum" className="form-control" placeholder="Nhập số CCCD"
+                                   autoComplete="off"/>
+                            <small><ErrorMessage name="identityNum" className="text-danger" component="div"/></small>
                         </div>
+
                     </div>
 
                     <div className="row">
                         <div className="col-md-6 mb-3">
-                            <label className="form-label">Quốc tịch <sup className="text-danger">*</sup></label>
+                        <label className={styles.formLabel}>Quốc tịch <sup
+                                className={styles.textDanger}>*</sup></label>
                             <Field as="select" name="nationalityCode" className="form-select">
                                 <option value="">-----Chọn-----</option>
                                 <option value="Việt Nam">Việt Nam</option>
@@ -137,7 +150,7 @@ export function MedicalBooking() {
                         </div>
 
                         <div className="col-md-6 mb-3">
-                            <label className="form-label">Dân tộc <sup className="text-danger">*</sup></label>
+                            <label className={styles.formLabel}>Dân tộc <sup className={styles.textDanger}>*</sup></label>
                             <Field as="select" name="ethnicCode" className="form-select">
                                 <option value="">-----Chọn-----</option>
                                 <option value="Kinh">Kinh</option>
@@ -149,13 +162,13 @@ export function MedicalBooking() {
 
                     <div className="row">
                         <div className="col-md-6 mb-3">
-                            <label className="form-label">Ngày cấp CCCD <sup className="text-danger">*</sup></label>
+                            <label className={styles.formLabel}>Ngày cấp CCCD <sup className={styles.textDanger}>*</sup></label>
                             <Field type="date" name="provDate" className="form-control"/>
                             <small><ErrorMessage name="provDate" component="div" className="text-danger"/></small>
                         </div>
 
                         <div className="col-md-6 mb-3">
-                            <label className="form-label">Ngày hết hạn CCCD <sup className="text-danger">*</sup></label>
+                            <label className={styles.formLabel}>Ngày hết hạn CCCD <sup className={styles.textDanger}>*</sup></label>
                             <Field type="date" name="outOfDate" className="form-control"/>
                             <small><ErrorMessage name="outOfDate" component="div" className="text-danger"/></small>
                         </div>
@@ -163,16 +176,16 @@ export function MedicalBooking() {
 
                     <div className="row">
                         <div className="col-md-6 mb-3">
-                            <label className="form-label">Họ và tên người thân <sup
-                                className="text-danger">*</sup></label>
+                            <label className={styles.formLabel}>Họ và tên người thân <sup
+                                className={styles.textDanger}>*</sup></label>
                             <Field type="text" name="parentName" className="form-control"
                                    placeholder="Nhập họ và tên người thân"/>
                             <small><ErrorMessage name="parentName" component="div" className="text-danger"/></small>
                         </div>
 
                         <div className="col-md-6 mb-3">
-                            <label className="form-label">Địa chỉ thường trú <sup
-                                className="text-danger">*</sup></label>
+                            <label className={styles.formLabel}>Địa chỉ thường trú <sup
+                                className={styles.textDanger}>*</sup></label>
                             <Field as="textarea" name="regLocation" className="form-control"
                                    placeholder="Nhập địa chỉ thường trú" rows="2"/>
                             <small><ErrorMessage name="regLocation" component="div" className="text-danger"/></small>
@@ -181,13 +194,13 @@ export function MedicalBooking() {
 
                     <div className="row">
                         <div className="col-md-6 mb-3">
-                            <label className="form-label">Số điện thoại <sup className="text-danger">*</sup></label>
+                            <label className={styles.formLabel}>Số điện thoại <sup className={styles.textDanger}>*</sup></label>
                             <Field type="text" name="phone" className="form-control" placeholder="Nhập số điện thoại"/>
                             <small><ErrorMessage name="phone" component="div" className="text-danger"/></small>
                         </div>
 
                         <div className="col-md-6 mb-3">
-                            <label className="form-label">Nghề nghiệp <sup className="text-danger">*</sup></label>
+                            <label className={styles.formLabel}>Nghề nghiệp <sup className={styles.textDanger}>*</sup></label>
                             <Field as="select" name="professionCode" className="form-select">
                                 <option value="">-----Chọn-----</option>
                                 <option value="Công an">Công an</option>
@@ -199,7 +212,7 @@ export function MedicalBooking() {
 
                     <div className="row">
                         <div className="col-md-4 mb-3">
-                            <label className="form-label">Tỉnh/Thành phố <sup className="text-danger">*</sup></label>
+                            <label className={styles.formLabel}>Tỉnh/Thành phố <sup className={styles.textDanger}>*</sup></label>
                             <Field as="select" name="provinceCode" className="form-select">
                                 <option value="">-----Chọn-----</option>
                                 <option value="Huế">Huế</option>
@@ -209,7 +222,7 @@ export function MedicalBooking() {
                         </div>
 
                         <div className="col-md-4 mb-3">
-                            <label className="form-label">Quận/Huyện <sup className="text-danger">*</sup></label>
+                            <label className={styles.formLabel}>Quận/Huyện <sup className={styles.textDanger}>*</sup></label>
                             <Field as="select" name="districtCode" className="form-select">
                                 <option value="">-----Chọn-----</option>
                                 <option value="Phú Xuân">Phú Xuân</option>
@@ -219,7 +232,7 @@ export function MedicalBooking() {
                         </div>
 
                         <div className="col-md-4 mb-3">
-                            <label className="form-label">Phường/Xã <sup className="text-danger">*</sup></label>
+                            <label className={styles.formLabel}>Phường/Xã <sup className={styles.textDanger}>*</sup></label>
                             <Field as="select" name="wardCode" className="form-select">
                                 <option value="">-----Chọn-----</option>
                                 <option value="An Đông">An Đông</option>
@@ -230,15 +243,15 @@ export function MedicalBooking() {
                     </div>
                     <hr/>
                     <div className="mb-3">
-                        <label className="form-label">Chuyên khoa <sup className="text-danger">*</sup></label>
+                        <label className={styles.formLabel}>Chuyên khoa <sup className={styles.textDanger}>*</sup></label>
                         <Field as="select" name="clinicCode" className="form-select">
                             <option value="">-----Chọn-----</option>
-                            {/*<option value="Ung bướu">Ung bướu</option>
-                            <option value="Nhi khoa">Nhi khoa</option>*/}
+                            <option value="Ung bướu">Ung bướu</option>
+                            <option value="Nhi khoa">Nhi khoa</option>
 
-                            {categories&&categories?.map((item) => (
+                           {/* {categories&&categories?.map((item) => (
                                 <option key={item.maKhoa} value={item.maKhoa}>{item.tenKhoa}</option>
-                            ))}
+                            ))}*/}
                         </Field>
                         <small><ErrorMessage name="clinicCode" component="div" className="text-danger"/></small>
                     </div>
@@ -248,8 +261,8 @@ export function MedicalBooking() {
                     <Field type="hidden" name="objectCode" value="00002"/>
 
                     <div className="mb-3">
-                        <label className="form-label">
-                            Nội dung yêu cầu <sup className="text-danger">*</sup>
+                        <label className={styles.formLabel}>
+                            Nội dung yêu cầu <sup className={styles.textDanger}>*</sup>
                         </label>
                         <Field
                             as="textarea"
@@ -262,8 +275,8 @@ export function MedicalBooking() {
                     </div>
 
                     <div className="mb-3">
-                        <label className="form-label">
-                            Phương thức thanh toán <sup className="text-danger">*</sup>
+                        <label className={styles.formLabel}>
+                            Phương thức thanh toán <sup className={styles.textDanger}>*</sup>
                         </label>
                         <Field as="select" name="paymentMethod" className="form-select">
                             <option value="">-----Chọn-----</option>
@@ -283,7 +296,7 @@ export function MedicalBooking() {
                     </div>
 
                     <div className="text-center mt-3">
-                        <button type="submit" className="btn btn-primary">Đăng Ký</button>
+                        <button type="submit" className={`${styles.btnButton} btn btn-primary`}>Đăng Ký</button>
                     </div>
                 </Form>
             </Formik>
