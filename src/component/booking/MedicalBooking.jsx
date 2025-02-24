@@ -40,7 +40,6 @@ export function MedicalBooking() {
         "districtCode": "",
         "wardCode": "",
         "paymentMethod": "",
-        "noteTn": ""
     }
 
 
@@ -260,19 +259,6 @@ export function MedicalBooking() {
                     <Field type="hidden" name="clinicFeeCode" value="TK01"/>
                     <Field type="hidden" name="objectCode" value="00002"/>
 
-                    <div className="mb-3">
-                        <label className={styles.formLabel}>
-                            Nội dung yêu cầu <sup className={styles.textDanger}>*</sup>
-                        </label>
-                        <Field
-                            as="textarea"
-                            name="noteTn"
-                            placeholder="Nhập ghi chú"
-                            className="form-control"
-                            style={{height: "80px", resize: "vertical"}}
-                        />
-                        <small><ErrorMessage name="noteTn" component="div" className="text-danger"/></small>
-                    </div>
 
                     <div className="mb-3">
                         <label className={styles.formLabel}>

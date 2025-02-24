@@ -42,7 +42,7 @@ const callsToAction = [
 ];
 
 const services = [
-    { name: 'Đặt lịch hẹn khám', description: 'Hiểu rõ hơn về lưu lượng truy cập của bạn', href: '#', icon: ChartPieIcon },
+    { name: 'Đặt lịch hẹn khám', description: 'Hiểu rõ hơn về lưu lượng truy cập của bạn', href: '/booking', icon: ChartPieIcon },
     { name: 'Đặt lịch khám tại bệnh viện', description: 'Hiểu rõ hơn về lưu lượng truy cập của bạn', href: '#', icon: ChartPieIcon },
     { name: 'Gói khám sức khỏe', description: 'Hiểu rõ hơn về lưu lượng truy cập của bạn', href: '#', icon: ChartPieIcon },
     { name: 'Đặt lịch xét nghiệm', description: 'Hiểu rõ hơn về lưu lượng truy cập của bạn', href: '#', icon: ChartPieIcon },
@@ -90,7 +90,7 @@ export function Header() {
                                             <item.icon aria-hidden="true" className="size-6 text-gray-600 group-hover:text-indigo-600" />
                                         </div>
                                         <div className="flex-auto">
-                                            <a href={item.href} className="block font-semibold text-gray-900">
+                                            <a href={item.href} className="block font-semibold text-gray-900" style={{ textDecoration: "none" }}>
                                                 {item.name}
                                                 <span className="absolute inset-0" />
                                             </a>
@@ -122,7 +122,7 @@ export function Header() {
                                             <item.icon aria-hidden="true" className="size-6 text-gray-600 group-hover:text-indigo-600" />
                                         </div>
                                         <div className="flex-auto">
-                                            <a href={item.href} className="block font-semibold text-gray-900">
+                                            <a href={item.href} className="block font-semibold text-gray-900" style={{ textDecoration: "none" }}>
                                                 {item.name}
                                                 <span className="absolute inset-0" />
                                             </a>
