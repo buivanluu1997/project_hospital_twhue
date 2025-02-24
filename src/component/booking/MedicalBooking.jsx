@@ -236,9 +236,9 @@ export function MedicalBooking() {
                             {/*<option value="Ung bướu">Ung bướu</option>
                             <option value="Nhi khoa">Nhi khoa</option>*/}
 
-                            <option value={categories?.[0]?.maKhoa || ""}>
-                                {categories?.[0]?.tenKhoa || "Chưa có dữ liệu"}
-                            </option>
+                            {categories&&categories?.map((item) => (
+                                <option key={item.maKhoa} value={item.maKhoa}>{item.tenKhoa}</option>
+                            ))}
                         </Field>
                         <small><ErrorMessage name="clinicCode" component="div" className="text-danger"/></small>
                     </div>
