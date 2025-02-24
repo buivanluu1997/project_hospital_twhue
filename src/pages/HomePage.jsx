@@ -5,7 +5,7 @@ import { Clinic } from '../component/sections/clinic';
 
 export const HomePage = () => {
     return (
-        <div>
+        <div className="pt-[60px] min-h-screen">
             <Header />
             <Clinic />
         </div>
