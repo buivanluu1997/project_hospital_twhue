@@ -3,8 +3,8 @@ import { useState } from "react";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import ReCAPTCHA from "react-google-recaptcha";
-import styles from '../booking/MedicalBooking.module.css'
-import {getCategories} from "../../service/Categories";
+import styles from './MedicalBooking.module.css'
+import {getCategories} from "../../../service/Categories";
 
 export function MedicalBooking() {
     const [captchaValue, setCaptchaValue] = useState(null);
@@ -83,7 +83,10 @@ export function MedicalBooking() {
             <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
 
                 <Form className="container">
-                    <h2 className={styles.textCenter}>Đặt lịch thăm khám tại Bệnh viện Quốc tế Trung Ương Huế</h2>
+
+                    <div className="card-header text-center">
+                        <h2 className={styles.textCenter}>Đặt Lịch Thăm Khám Tại Bệnh Viện Quốc tế Trung Ương Huế</h2>
+                    </div>
 
                     <div className="row">
                         <div className="col-md-6 mb-3">
@@ -98,11 +101,6 @@ export function MedicalBooking() {
                         <div className="col-md-6 mb-3">
                             <label className={styles.formLabel}>Giới tính <sup
                                 className={styles.textDanger}>*</sup></label>
-                            {/*<Field as="select" name="gender" className="form-control">
-                                <option value="">-----Chọn-----</option>
-                                <option value="Nam">Nam</option>
-                                <option value="Nữ">Nữ</option>
-                            </Field>*/}
                             <div style={{display: "flex", gap: "20px"}}>
                                 <label className={styles.radioLabel}>
                                     <Field type="radio" name="gender" value="Nam" className={styles.radioInput}/> Nam
@@ -137,7 +135,7 @@ export function MedicalBooking() {
 
                     <div className="row">
                         <div className="col-md-6 mb-3">
-                        <label className={styles.formLabel}>Quốc tịch <sup
+                            <label className={styles.formLabel}>Quốc tịch <sup
                                 className={styles.textDanger}>*</sup></label>
                             <Field as="select" name="nationalityCode" className="form-select">
                                 <option value="">-----Chọn-----</option>
@@ -149,7 +147,8 @@ export function MedicalBooking() {
                         </div>
 
                         <div className="col-md-6 mb-3">
-                            <label className={styles.formLabel}>Dân tộc <sup className={styles.textDanger}>*</sup></label>
+                            <label className={styles.formLabel}>Dân tộc <sup
+                                className={styles.textDanger}>*</sup></label>
                             <Field as="select" name="ethnicCode" className="form-select">
                                 <option value="">-----Chọn-----</option>
                                 <option value="Kinh">Kinh</option>
@@ -167,7 +166,8 @@ export function MedicalBooking() {
                         </div>
 
                         <div className="col-md-6 mb-3">
-                            <label className={styles.formLabel}>Ngày hết hạn CCCD <sup className={styles.textDanger}>*</sup></label>
+                            <label className={styles.formLabel}>Ngày hết hạn CCCD <sup
+                                className={styles.textDanger}>*</sup></label>
                             <Field type="date" name="outOfDate" className="form-control"/>
                             <small><ErrorMessage name="outOfDate" component="div" className="text-danger"/></small>
                         </div>
@@ -199,7 +199,8 @@ export function MedicalBooking() {
                         </div>
 
                         <div className="col-md-6 mb-3">
-                            <label className={styles.formLabel}>Nghề nghiệp <sup className={styles.textDanger}>*</sup></label>
+                            <label className={styles.formLabel}>Nghề nghiệp <sup
+                                className={styles.textDanger}>*</sup></label>
                             <Field as="select" name="professionCode" className="form-select">
                                 <option value="">-----Chọn-----</option>
                                 <option value="Công an">Công an</option>
@@ -211,7 +212,8 @@ export function MedicalBooking() {
 
                     <div className="row">
                         <div className="col-md-4 mb-3">
-                            <label className={styles.formLabel}>Tỉnh/Thành phố <sup className={styles.textDanger}>*</sup></label>
+                            <label className={styles.formLabel}>Tỉnh/Thành phố <sup
+                                className={styles.textDanger}>*</sup></label>
                             <Field as="select" name="provinceCode" className="form-select">
                                 <option value="">-----Chọn-----</option>
                                 <option value="Huế">Huế</option>
@@ -221,7 +223,8 @@ export function MedicalBooking() {
                         </div>
 
                         <div className="col-md-4 mb-3">
-                            <label className={styles.formLabel}>Quận/Huyện <sup className={styles.textDanger}>*</sup></label>
+                            <label className={styles.formLabel}>Quận/Huyện <sup
+                                className={styles.textDanger}>*</sup></label>
                             <Field as="select" name="districtCode" className="form-select">
                                 <option value="">-----Chọn-----</option>
                                 <option value="Phú Xuân">Phú Xuân</option>
@@ -231,7 +234,8 @@ export function MedicalBooking() {
                         </div>
 
                         <div className="col-md-4 mb-3">
-                            <label className={styles.formLabel}>Phường/Xã <sup className={styles.textDanger}>*</sup></label>
+                            <label className={styles.formLabel}>Phường/Xã <sup
+                                className={styles.textDanger}>*</sup></label>
                             <Field as="select" name="wardCode" className="form-select">
                                 <option value="">-----Chọn-----</option>
                                 <option value="An Đông">An Đông</option>
@@ -242,13 +246,14 @@ export function MedicalBooking() {
                     </div>
                     <hr/>
                     <div className="mb-3">
-                        <label className={styles.formLabel}>Chuyên khoa <sup className={styles.textDanger}>*</sup></label>
+                        <label className={styles.formLabel}>Chuyên khoa <sup
+                            className={styles.textDanger}>*</sup></label>
                         <Field as="select" name="clinicCode" className="form-select">
                             <option value="">-----Chọn-----</option>
                             <option value="Ung bướu">Ung bướu</option>
                             <option value="Nhi khoa">Nhi khoa</option>
 
-                           {/* {categories&&categories?.map((item) => (
+                            {/* {categories&&categories?.map((item) => (
                                 <option key={item.maKhoa} value={item.maKhoa}>{item.tenKhoa}</option>
                             ))}*/}
                         </Field>
@@ -282,7 +287,7 @@ export function MedicalBooking() {
                     </div>
 
                     <div className="text-center mt-3">
-                        <button type="submit" className={`${styles.btnButton} btn btn-primary`}>Đăng Ký</button>
+                        <button type="submit" className={`${styles.btnButton} btn btn-primary`}>Tiếp theo</button>
                     </div>
                 </Form>
             </Formik>

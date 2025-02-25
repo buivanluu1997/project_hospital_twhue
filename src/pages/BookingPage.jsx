@@ -1,7 +1,7 @@
 import React from 'react';
-import LayoutRoot from "../component/booking/LayoutRoot";
-import MedicalBooking from "../component/booking/MedicalBooking";
-import MedicalInfo from "../component/booking/MedicalInfo";
+import LayoutRoot from "../component/booking/registration/LayoutRoot";
+import MedicalBooking from "../component/booking/registration/MedicalBooking";
+import MedicalInfo from "../component/booking/registration/MedicalInfo";
 
 export default function BookingPage(){
     return(

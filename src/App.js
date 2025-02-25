@@ -3,6 +3,7 @@ import { HomePage } from './pages/HomePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min';
 import BookingPage from "./pages/BookingPage";
+import ConfirmPage from "./pages/ConfirmPage";
 
 function App() {
     return (
@@ -15,6 +16,10 @@ function App() {
                 <Route
                     path="/booking"
                     element={<BookingPage/>}
+                />
+                <Route
+                    path="/confirm"
+                    element={<ConfirmPage/>}
                 />
             </Routes>
         </div>
