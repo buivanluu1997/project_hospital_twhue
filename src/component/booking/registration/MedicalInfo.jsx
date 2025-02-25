@@ -1,6 +1,6 @@
 import React from 'react';
-import imageBooking from '../../assets/images/image-booking.png'
-import khamBenh from '../../assets/images/kham_benh.jpg'
+import imageBooking from '../../../assets/images/image-booking.png'
+import khamBenh from '../../../assets/images/kham_benh.jpg'
 export default function MedicalInfo(){
     return(
         <>

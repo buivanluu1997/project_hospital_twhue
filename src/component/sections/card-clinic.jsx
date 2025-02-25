@@ -26,7 +26,7 @@ export const CardClinic = () => {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
                 {
                     services && services.map((text, index) => (
-                        <Link key={index} to={text.ref}>
+                        <Link key={index} to={text.ref} style={{ textDecoration: "none" }}>
                             <div
                                 className="w-[160px] h-[160px] p-4 bg-white border border-gray-300 rounded-xl shadow-md flex flex-col items-center justify-center hover:shadow-lg hover:scale-105 transition-all"
                             >
