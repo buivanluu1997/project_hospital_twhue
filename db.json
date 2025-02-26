@@ -1,0 +1,249 @@
+{
+  "registerMedical": [
+    {
+      "id": 1,
+      "fullName": "Nguyễn Văn Bình",
+      "identityNum": "12445751551",
+      "dayOfBirth": "1/12/1998",
+      "gender": "Nam",
+      "nationalityCode": "VN",
+      "ethnicCode": "KINH",
+      "provDate": "21/10/2021",
+      "outOfDate": "21/10/2035",
+      "parentName": "Nguyễn Văn Trung",
+      "clinicFeeCode": "TK01",
+      "ObjectCode": "00002",
+      "regLocation": "An Đông- Thuận Hoá- Tp Huế",
+      "phone": "0987888555",
+      "professionCode": "GV",
+      "clinicCode": "TIMMACH",
+      "provinceCode": "HUE",
+      "districtCode": "THUANHOA",
+      "wardCode": "TRUONGAN",
+      "paymentMethod": "1"
+    },
+    {
+      "fullName": "Trần Thành Long",
+      "identityNum": "124457514441",
+      "dayOfBirth": "1/11/1999",
+      "gender": "Nam",
+      "nationalityCode": "VN",
+      "ethnicCode": "KINH",
+      "provDate": "25/10/2021",
+      "outOfDate": "25/10/2035",
+      "parentName": "Trần Thành Hữu",
+      "clinicFeeCode": "TK01",
+      "ObjectCode": "00002",
+      "regLocation": "Tây Lộc- Phú Xuân- Tp Huế",
+      "phone": "0987777777",
+      "professionCode": "CA",
+      "clinicCode": "TIMMACH",
+      "provinceCode": "HUE",
+      "districtCode": "PHUXUAN",
+      "wardCode": "TAYLOC",
+      "paymentMethod": "1",
+      "id": 2
+    }
+  ],
+  "nationality": [
+    {
+      "id": 1,
+      "nationalityCode": "VN",
+      "name": "Việt Nam"
+    },
+    {
+      "id": 2,
+      "nationalityCode": "LAO",
+      "name": "Lào"
+    },
+    {
+      "id": 3,
+      "nationalityCode": "CAM",
+      "name": "Campuchia"
+    },
+    {
+      "id": 4,
+      "nationalityCode": "USA",
+      "name": "Mỹ"
+    },
+    {
+      "id": 5,
+      "nationalityCode": "KHAC",
+      "name": "Khác"
+    }
+  ],
+  "ethnic": [
+    {
+      "id": 1,
+      "ethnicCode": "KINH",
+      "name": "Kinh"
+    },
+    {
+      "id": 2,
+      "ethnicCode": "EDE",
+      "name": "Ê đê"
+    },
+    {
+      "id": 3,
+      "ethnicCode": "THAI",
+      "name": "Thái"
+    },
+    {
+      "id": 4,
+      "ethnicCode": "TAY",
+      "name": "Tày"
+    },
+    {
+      "id": 5,
+      "ethnicCode": "KHAC",
+      "name": "Khác"
+    }
+  ],
+  "profession": [
+    {
+      "id": 1,
+      "professionCode": "GV",
+      "name": "Giáo viên"
+    },
+    {
+      "id": 2,
+      "professionCode": "CA",
+      "name": "Công an"
+    },
+    {
+      "id": 3,
+      "professionCode": "ND",
+      "name": "Nông dân"
+    },
+    {
+      "id": 4,
+      "professionCode": "CN",
+      "name": "Công nhân"
+    },
+    {
+      "id": 5,
+      "professionCode": "KHAC",
+      "name": "Khác"
+    }
+  ],
+  "clinic": [
+    {
+      "id": 1,
+      "clinicCode": "TIMMACH",
+      "name": "Tim mạch"
+    },
+    {
+      "id": 2,
+      "clinicCode": "NHI",
+      "name": "Khoa nhi"
+    },
+    {
+      "id": 3,
+      "clinicCode": "UNGBUOU",
+      "name": "Ung bướu"
+    },
+    {
+      "id": 4,
+      "clinicCode": "MAT",
+      "name": "Khoa mắt"
+    },
+    {
+      "id": 5,
+      "clinicCode": "SAN",
+      "name": "Khoa sản"
+    }
+  ],
+  "province": [
+    {
+      "id": 1,
+      "provinceCode": "HUE",
+      "name": "Thành phố Huế"
+    },
+    {
+      "id": 2,
+      "provinceCode": "QUANGTRI",
+      "name": "Quảng Trị"
+    },
+    {
+      "id": 3,
+      "provinceCode": "KHÁC",
+      "name": "Khác"
+    }
+  ],
+  "district": [
+    {
+      "id": 1,
+      "provinceCode": "HUE",
+      "districtCode": "THUANHOA",
+      "name": "Thuận Hoá"
+    },
+    {
+      "id": 2,
+      "provinceCode": "HUE",
+      "districtCode": "PHUXUAN",
+      "name": "Phú Xuân"
+    },
+    {
+      "id": 3,
+      "provinceCode": "QUANGTRI",
+      "districtCode": "DONGHA",
+      "name": "Đông Hà"
+    },
+    {
+      "id": 4,
+      "provinceCode": "QUANGTRI",
+      "districtCode": "HAILANG",
+      "name": "Hải Lăng"
+    }
+  ],
+  "ward": [
+    {
+      "id": 1,
+      "districtCode": "THUANHOA",
+      "wardCode": "TRUONGAN",
+      "name": "Trường An"
+    },
+    {
+      "id": 2,
+      "districtCode": "THUANHOA",
+      "wardCode": "VINHNINH",
+      "name": "Vĩnh Ninh"
+    },
+    {
+      "id": 3,
+      "districtCode": "PHUXUAN",
+      "wardCode": "TAYLOC",
+      "name": "Tây Lộc"
+    },
+    {
+      "id": 4,
+      "districtCode": "PHUXUAN",
+      "wardCode": "DONGBA",
+      "name": "Đông Ba"
+    },
+    {
+      "id": 5,
+      "districtCode": "DONGHA",
+      "wardCode": "PHUONG1",
+      "name": "Phường 1"
+    },
+    {
+      "id": 6,
+      "districtCode": "HAILANG",
+      "wardCode": "HAILAM",
+      "name": "Hải Lâm"
+    },
+    {
+      "id": 7,
+      "districtCode": "HAILANG",
+      "wardCode": "HAITHUONG",
+      "name": "Hải Thượng"
+    },
+    {
+      "id": 8,
+      "districtCode": "DONGHA",
+      "wardCode": "PHUONG1",
+      "name": "Phường 1"
+    }
+  ]
+}
