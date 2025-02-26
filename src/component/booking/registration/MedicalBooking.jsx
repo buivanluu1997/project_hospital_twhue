@@ -5,20 +5,92 @@ import * as Yup from "yup";
 import ReCAPTCHA from "react-google-recaptcha";
 import styles from './MedicalBooking.module.css'
 import {getCategories} from "../../../service/Categories";
+import {getNationality} from "../../../service/nationality";
+import {getEthnic} from "../../../service/ethnic";
+import {getProfession} from "../../../service/profession";
+import {getClinic} from "../../../service/clinic";
+import {getProvince} from "../../../service/province";
+import {getDistrict} from "../../../service/district";
+import {getWard} from "../../../service/ward";
+import {useNavigate} from "react-router-dom";
 
 export function MedicalBooking() {
     const [captchaValue, setCaptchaValue] = useState(null);
-    const [categories, setCategories] = useState([]);
+    const [nationalityList, setNationalityList] = useState([]);
+    const [ethnicList, setEthnicList] = useState([]);
+    const [professionList, setProfessionList] = useState([]);
+    const [clinicList, setClinicList] = useState([]);
+    const [provinceList, setProvinceList] = useState([]);
+    const [districtList, setDistrictList] = useState([]);
+    const [wardList, setWardList] = useState([]);
+    const [selectedProvince, setSelectedProvince] = useState("");
+    const [selectedDistrict, setSelectedDistrict] = useState("");
 
-    /*useEffect(() => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
         const fetchData = async () => {
-            const list = await getCategories();
-            console.log("================list===========");
-            console.log(list.data)
-            setCategories(list.data);
+            const list = await getNationality();
+            console.log(list)
+            setNationalityList(list);
         }
         fetchData();
-    },[])*/
+    },[])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const list = await getEthnic();
+            setEthnicList(list)
+        }
+        fetchData();
+    }, []);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const list = await getProfession();
+            setProfessionList(list)
+        }
+        fetchData();
+    },[]);
+    useEffect(() => {
+        const fetchData = async () => {
+            const list = await getClinic();
+            setClinicList(list)
+        }
+        fetchData();
+    },[]);
+    useEffect(() => {
+        const fetchData = async () => {
+            const list = await getProvince();
+            console.log("----------tỉnh----------")
+            console.log(list)
+            setProvinceList(list)
+        }
+        fetchData();
+    },[]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            if (!selectedProvince) return;
+            const list = await getDistrict(selectedProvince);
+            console.log("----------huyện----------")
+            console.log(list)
+            setDistrictList(list)
+        }
+        fetchData();
+    },[selectedProvince]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            if (!selectedDistrict) return;
+            const list = await getWard(selectedDistrict);
+            console.log("----------xã----------")
+            console.log(list)
+            setWardList(list)
+        }
+        fetchData();
+    },[selectedDistrict]);
+
 
     const initialValues = {
         "fullName": "",
@@ -44,29 +116,27 @@ export function MedicalBooking() {
 
 
     const validationSchema = Yup.object({
-        fullName: Yup.string().required("Họ và tên không được để trống"),
-        identityNum: Yup.string().required("Số CCCD không được để trống"),
-        dayOfBirth: Yup.date().required("Ngày sinh không được để trống"),
-        gender: Yup.string().required("Giới tính không được để trống"),
-        nationalityCode: Yup.string().required("Quốc tịch không được để trống"),
-        ethnicCode: Yup.string().required("Dân tộc không được để trống"),
-        provDate: Yup.date().required("Ngày cấp CCCD không được để trống"),
-        outOfDate: Yup.date().required("Ngày hết hạn CCCD không được để trống"),
+        fullName: Yup.string().required("Vui lòng nhập họ và tên"),
+        identityNum: Yup.string().required("Vui lòng nhập số CCCD"),
+        dayOfBirth: Yup.date().required("Vui lòng chọn ngày sinh"),
+        gender: Yup.string().required("Vui lòng chọn giới tính"),
+        nationalityCode: Yup.string().required("Vui lòng chọn quốc tịch"),
+        ethnicCode: Yup.string().required("Vui lòng chọn dân tộc"),
+        provDate: Yup.date().required("Vui lòng chọn ngày cấp CCCD"),
+        outOfDate: Yup.date().required("Vui lòng chọn ngày hết hạn CCCD"),
         parentName: Yup.string()
             .matches(/^[\p{L} ]+$/u, "Tên không được chứa số hoặc ký tự đặc biệt")
             .min(2, "Tên quá ngắn")
             .max(50, "Tên quá dài")
-            .required("Họ và tên người thân không được để trống"),
-        regLocation: Yup.string().required("Địa chỉ thường trú không được để trống"),
-        phone: Yup.string()
-            .matches(/^[0-9]+$/, "Số điện thoại chỉ được chứa số")
-            .required("Số điện thoại không được để trống"),
-        professionCode: Yup.string().required("Nghề nghiệp không được để trống"),
-        clinicCode: Yup.string().required("Chuyên khoa không được để trống"),
-        provinceCode: Yup.string().required("Tỉnh/Thành phố không được để trống"),
-        districtCode: Yup.string().required("Quận/Huyện không được để trống"),
-        wardCode: Yup.string().required("Phường/Xã không được để trống"),
-        paymentMethod: Yup.string().required("Phương thức thanh toán không được để trống")
+            .required("Vui lòng nhập họ và tên người thân"),
+        regLocation: Yup.string().required("Vui lòng nhập địa chỉ thường trú"),
+        phone: Yup.string().required("Vui lòng nhập số điện thoại"),
+        professionCode: Yup.string().required("Vui lòng chọn nghề nghiệp"),
+        clinicCode: Yup.string().required("Vui lòng nhập chuyên khoa"),
+      /*  provinceCode: Yup.string().required("Vui lòng chọn Tỉnh/Thành phố"),
+        districtCode: Yup.string().required("Vui lòng chọn Quận/Huyện"),
+        wardCode: Yup.string().required("Vui lòng chọn Phường/Xã"),*/
+        paymentMethod: Yup.string().required("Vui lòng chọn phương thức thanh toán")
     })
 
     const handleSubmit = (values) => {
@@ -75,6 +145,18 @@ export function MedicalBooking() {
             return;
         }
         console.log("Dữ liệu hợp lệ:", values);
+        const registerMedical = {
+            ...values,
+            provinceCode: selectedProvince,
+            districtCode: selectedDistrict,
+            paymentMethod: parseInt(values.paymentMethod)
+        }
+        console.log("---mã-----")
+        console.log("mã tỉnh: " + selectedProvince)
+        console.log("mã huyện: " + selectedDistrict)
+        console.log("=====-----===+++++")
+        console.log(registerMedical)
+        navigate("/confirm", { state: { registerMedical } });
     }
 
     return (
@@ -85,7 +167,7 @@ export function MedicalBooking() {
                 <Form className="container">
 
                     <div className="card-header text-center">
-                        <h2 className={styles.textCenter}>Đặt Lịch Thăm Khám Tại Bệnh Viện Quốc tế Trung Ương Huế</h2>
+                        <h2 className={styles.textCenter}>Đặt Lịch Khám Tại Bệnh Viện Quốc tế Trung Ương Huế</h2>
                     </div>
 
                     <div className="row">
@@ -139,8 +221,12 @@ export function MedicalBooking() {
                                 className={styles.textDanger}>*</sup></label>
                             <Field as="select" name="nationalityCode" className="form-select">
                                 <option value="">-----Chọn-----</option>
-                                <option value="Việt Nam">Việt Nam</option>
-                                <option value="Lào">Lào</option>
+                                {
+                                    nationalityList?.map(nationality => (
+                                        <option key={nationality.nationalityCode}
+                                                value={nationality.nationalityCode}>{nationality.name}</option>
+                                    ))
+                                }
                             </Field>
                             <small><ErrorMessage name="nationalityCode" component="div"
                                                  className="text-danger"/></small>
@@ -151,8 +237,11 @@ export function MedicalBooking() {
                                 className={styles.textDanger}>*</sup></label>
                             <Field as="select" name="ethnicCode" className="form-select">
                                 <option value="">-----Chọn-----</option>
-                                <option value="Kinh">Kinh</option>
-                                <option value="Tày">Tày</option>
+                                {
+                                    ethnicList?.map(ethnic => (
+                                        <option key={ethnic.ethnicCode} value={ethnic.ethnicCode}>{ethnic.name}</option>
+                                    ))
+                                }
                             </Field>
                             <small><ErrorMessage name="ethnicCode" component="div" className="text-danger"/></small>
                         </div>
@@ -203,8 +292,12 @@ export function MedicalBooking() {
                                 className={styles.textDanger}>*</sup></label>
                             <Field as="select" name="professionCode" className="form-select">
                                 <option value="">-----Chọn-----</option>
-                                <option value="Công an">Công an</option>
-                                <option value="Giáo viên">Giáo viên</option>
+                                {
+                                    professionList?.map(profession => (
+                                        <option key={profession.professionCode}
+                                                value={profession.professionCode}>{profession.name}</option>
+                                    ))
+                                }
                             </Field>
                             <small><ErrorMessage name="professionCode" component="div" className="text-danger"/></small>
                         </div>
@@ -214,21 +307,49 @@ export function MedicalBooking() {
                         <div className="col-md-4 mb-3">
                             <label className={styles.formLabel}>Tỉnh/Thành phố <sup
                                 className={styles.textDanger}>*</sup></label>
-                            <Field as="select" name="provinceCode" className="form-select">
-                                <option value="">-----Chọn-----</option>
-                                <option value="Huế">Huế</option>
-                                <option value="Đà Nẵng">Đà Nẵng</option>
+
+                            <Field as="select" name="provinceCode" className="form-select"
+                                   value={selectedProvince}
+                                   onChange={(e) => {
+                                       const selectedValue = e.target.value;
+                                       setSelectedProvince(selectedValue);
+                                       setSelectedDistrict("");
+                                       setWardList([]);
+                                   }}>
+                                <option value="">Chọn tỉnh/thành phố</option>
+                                {provinceList?.map((province) => (
+                                    <option key={province.provinceCode} value={province.provinceCode}
+                                            onClick={() => {
+                                                setSelectedProvince(province.provinceCode);
+                                            }}>
+                                        {province.name}
+                                    </option>
+                                ))}
                             </Field>
-                            <small><ErrorMessage name="provinceCode" component="div" className="text-danger"/></small>
                         </div>
 
                         <div className="col-md-4 mb-3">
                             <label className={styles.formLabel}>Quận/Huyện <sup
                                 className={styles.textDanger}>*</sup></label>
-                            <Field as="select" name="districtCode" className="form-select">
+                            <Field as="select" name="districtCode" className="form-select"
+                                   value={selectedDistrict}
+                                   onChange={(e) => {
+                                       setSelectedDistrict(e.target.value);
+                                   }}
+                                disabled={!selectedProvince}>
                                 <option value="">-----Chọn-----</option>
-                                <option value="Phú Xuân">Phú Xuân</option>
-                                <option value="Thuận Hoá">Thuận Hoá</option>
+                                {
+                                    districtList?.map((district) => (
+                                        <option key={district.districtCode}
+                                                value={district.districtCode}
+                                                onClick={() => {
+                                                    setSelectedDistrict(district.districtCode);
+                                                }}>
+                                            {district.name}
+                                        </option>
+                                    ))
+
+                                }
                             </Field>
                             <small><ErrorMessage name="districtCode" component="div" className="text-danger"/></small>
                         </div>
@@ -236,26 +357,28 @@ export function MedicalBooking() {
                         <div className="col-md-4 mb-3">
                             <label className={styles.formLabel}>Phường/Xã <sup
                                 className={styles.textDanger}>*</sup></label>
-                            <Field as="select" name="wardCode" className="form-select">
+                            <Field as="select" name="wardCode" className="form-select" disabled={!selectedDistrict}>
                                 <option value="">-----Chọn-----</option>
-                                <option value="An Đông">An Đông</option>
-                                <option value="An Tây">An Tây</option>
+                                {
+                                    wardList?.map((ward) => (
+                                        <option key={ward.wardCode} value={ward.wardCode}>{ward.name}</option>
+                                    ))
+                                }
                             </Field>
                             <small><ErrorMessage name="wardCode" component="div" className="text-danger"/></small>
                         </div>
                     </div>
+
+
                     <hr/>
                     <div className="mb-3">
                         <label className={styles.formLabel}>Chuyên khoa <sup
                             className={styles.textDanger}>*</sup></label>
                         <Field as="select" name="clinicCode" className="form-select">
                             <option value="">-----Chọn-----</option>
-                            <option value="Ung bướu">Ung bướu</option>
-                            <option value="Nhi khoa">Nhi khoa</option>
-
-                            {/* {categories&&categories?.map((item) => (
-                                <option key={item.maKhoa} value={item.maKhoa}>{item.tenKhoa}</option>
-                            ))}*/}
+                            {clinicList?.map((clinic) => (
+                                <option key={clinic.clinicCode} value={clinic.clinicCode}>{clinic.name}</option>
+                            ))}
                         </Field>
                         <small><ErrorMessage name="clinicCode" component="div" className="text-danger"/></small>
                     </div>
