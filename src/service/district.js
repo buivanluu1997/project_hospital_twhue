@@ -21,8 +21,7 @@ export const findByDistrictCode = async (districtCode) => {
             method: "GET",
             url: `http://localhost:8080/district?districtCode=${districtCode}`,
         });
-
-        return response.data;
+        return response.data?.length > 0 ? response.data[0] : {};
     } catch (error) {
         console.error("Error fetching departments: ", error);
         throw new Error(error.message || "An unknown error occurred");
