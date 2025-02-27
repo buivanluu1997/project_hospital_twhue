@@ -4,15 +4,14 @@ import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import ReCAPTCHA from "react-google-recaptcha";
 import styles from './MedicalBooking.module.css'
-import {getCategories} from "../../../service/Categories";
 import {getNationality} from "../../../service/nationality";
 import {getEthnic} from "../../../service/ethnic";
 import {getProfession} from "../../../service/profession";
 import {getClinic} from "../../../service/clinic";
 import {getProvince} from "../../../service/province";
-import {getDistrict} from "../../../service/district";
+import {useLocation, useNavigate} from "react-router-dom";
 import {getWard} from "../../../service/ward";
-import {useNavigate} from "react-router-dom";
+import {getDistrict} from "../../../service/district";
 
 export function MedicalBooking() {
     const [captchaValue, setCaptchaValue] = useState(null);
@@ -26,7 +25,33 @@ export function MedicalBooking() {
     const [selectedProvince, setSelectedProvince] = useState("");
     const [selectedDistrict, setSelectedDistrict] = useState("");
 
+    const location = useLocation();
     const navigate = useNavigate();
+
+    const savedState = location.state;
+
+    const value = {
+        "fullName": "",
+        "identityNum": "",
+        "dayOfBirth": "",
+        "gender": "",
+        "nationalityCode": "",
+        "ethnicCode": "",
+        "provDate": "",
+        "outOfDate": "",
+        "parentName": "",
+        "clinicFeeCode": "TK01",
+        "ObjectCode": "00002",
+        "regLocation": "",
+        "phone": "",
+        "professionCode": "",
+        "clinicCode": "",
+        "provinceCode": "",
+        "districtCode": "",
+        "wardCode": "",
+        "paymentMethod": "",
+    }
+    const initialValues = savedState ? savedState : value;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -62,8 +87,6 @@ export function MedicalBooking() {
     useEffect(() => {
         const fetchData = async () => {
             const list = await getProvince();
-            console.log("----------tỉnh----------")
-            console.log(list)
             setProvinceList(list)
         }
         fetchData();
@@ -73,8 +96,6 @@ export function MedicalBooking() {
         const fetchData = async () => {
             if (!selectedProvince) return;
             const list = await getDistrict(selectedProvince);
-            console.log("----------huyện----------")
-            console.log(list)
             setDistrictList(list)
         }
         fetchData();
@@ -84,35 +105,11 @@ export function MedicalBooking() {
         const fetchData = async () => {
             if (!selectedDistrict) return;
             const list = await getWard(selectedDistrict);
-            console.log("----------xã----------")
-            console.log(list)
             setWardList(list)
         }
         fetchData();
     },[selectedDistrict]);
 
-
-    const initialValues = {
-        "fullName": "",
-        "identityNum": "",
-        "dayOfBirth": "",
-        "gender": "",
-        "nationalityCode": "",
-        "ethnicCode": "",
-        "provDate": "",
-        "outOfDate": "",
-        "parentName": "",
-        "clinicFeeCode": "TK01",
-        "ObjectCode": "00002",
-        "regLocation": "",
-        "phone": "",
-        "professionCode": "",
-        "clinicCode": "",
-        "provinceCode": "",
-        "districtCode": "",
-        "wardCode": "",
-        "paymentMethod": "",
-    }
 
 
     const validationSchema = Yup.object({
@@ -151,11 +148,7 @@ export function MedicalBooking() {
             districtCode: selectedDistrict,
             paymentMethod: parseInt(values.paymentMethod)
         }
-        console.log("---mã-----")
-        console.log("mã tỉnh: " + selectedProvince)
-        console.log("mã huyện: " + selectedDistrict)
-        console.log("=====-----===+++++")
-        console.log(registerMedical)
+
         navigate("/confirm", { state: { registerMedical } });
     }
 
@@ -331,6 +324,7 @@ export function MedicalBooking() {
                         <div className="col-md-4 mb-3">
                             <label className={styles.formLabel}>Quận/Huyện <sup
                                 className={styles.textDanger}>*</sup></label>
+
                             <Field as="select" name="districtCode" className="form-select"
                                    value={selectedDistrict}
                                    onChange={(e) => {
@@ -357,6 +351,8 @@ export function MedicalBooking() {
                         <div className="col-md-4 mb-3">
                             <label className={styles.formLabel}>Phường/Xã <sup
                                 className={styles.textDanger}>*</sup></label>
+
+
                             <Field as="select" name="wardCode" className="form-select" disabled={!selectedDistrict}>
                                 <option value="">-----Chọn-----</option>
                                 {

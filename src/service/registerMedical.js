@@ -6,7 +6,7 @@ export const addRegisterMedical = async (registerMedical) => {
         let response = await fetchApi({
             method: "POST",
             url: "http://localhost:8080/registerMedical",
-            body: registerMedical
+            data: registerMedical
         });
 
         return response.data;

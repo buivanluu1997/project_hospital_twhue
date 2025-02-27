@@ -22,7 +22,7 @@ export const findByProvinceCode = async (provinceCode) => {
             url: `http://localhost:8080/province?provinceCode=${provinceCode}`,
         });
 
-        return response.data;
+        return response.data?.length > 0 ? response.data[0] : {};
     } catch (error) {
         console.error("Error fetching departments: ", error);
         throw new Error(error.message || "An unknown error occurred");

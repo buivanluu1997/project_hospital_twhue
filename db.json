@@ -21,28 +21,6 @@
       "districtCode": "THUANHOA",
       "wardCode": "TRUONGAN",
       "paymentMethod": "1"
-    },
-    {
-      "fullName": "Trần Thành Long",
-      "identityNum": "124457514441",
-      "dayOfBirth": "1/11/1999",
-      "gender": "Nam",
-      "nationalityCode": "VN",
-      "ethnicCode": "KINH",
-      "provDate": "25/10/2021",
-      "outOfDate": "25/10/2035",
-      "parentName": "Trần Thành Hữu",
-      "clinicFeeCode": "TK01",
-      "ObjectCode": "00002",
-      "regLocation": "Tây Lộc- Phú Xuân- Tp Huế",
-      "phone": "0987777777",
-      "professionCode": "CA",
-      "clinicCode": "TIMMACH",
-      "provinceCode": "HUE",
-      "districtCode": "PHUXUAN",
-      "wardCode": "TAYLOC",
-      "paymentMethod": "1",
-      "id": 2
     }
   ],
   "nationality": [
@@ -242,8 +220,8 @@
     {
       "id": 8,
       "districtCode": "DONGHA",
-      "wardCode": "PHUONG1",
-      "name": "Phường 1"
+      "wardCode": "PHUONG2",
+      "name": "Phường 2"
     }
   ]
 }
