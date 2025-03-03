@@ -64,7 +64,7 @@ export function ExaminationService() {
                     <h1 className={styles.h2}>GÓI KHÁM SỨC KHOẺ TỔNG QUÁT TẠI BỆNH VIỆN QUỐC TẾ TW HUẾ</h1>
                 </div>
                 {/* Danh sách dịch vụ */}
-                <div className="row">
+                <div className="row" style={{marginTop: "30px"}}>
                     {service?.map((item, index) => (
                         <div key={index} className="col-md-4">
                             <div className={`${styles.card} position-relative`}>
