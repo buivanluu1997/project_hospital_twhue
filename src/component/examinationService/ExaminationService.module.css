@@ -1,0 +1,66 @@
+/*
+.nav{
+    position: relative;
+    display: inline-block
+}
+.img{
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+.h2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    backgroundColor: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    borderRadius: 5px;
+}*/
+
+.container {
+    width: 100vw; /* Chiều rộng toàn bộ màn hình */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.nav {
+    position: relative;
+    width: 100%;
+    height: 220px; /* Giữ chiều cao cố định */
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Giữ tỷ lệ ảnh, cắt nếu cần */
+}
+
+.h2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6); /* Nền mờ để dễ đọc hơn */
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.5rem; /* Giữ kích thước chữ hợp lý */
+    text-align: center;
+    width: 80%; /* Giới hạn chiều rộng tiêu đề */
+}
+
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 25px;
+}
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #007bff;
+}
