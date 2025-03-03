@@ -37,8 +37,7 @@
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 .price {
     font-size: 20px;
@@ -55,7 +54,7 @@
 }
 .cardImg{
   /*  width: 296px;*/
-    height: 250px;
+    height: 300px;
     width: 100%;
     object-fit: cover;
 }
