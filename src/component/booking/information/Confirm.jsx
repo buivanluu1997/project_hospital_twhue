@@ -92,8 +92,6 @@ export function RegistrationConfirmation() {
     },[registerMedical.wardCode])
 
     const handleRegister = async () => {
-        console.log("==========agi========")
-        console.log(registerMedical)
 
         await addRegisterMedical(registerMedical);
 

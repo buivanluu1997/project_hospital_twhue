@@ -9,6 +9,12 @@ import NoiCoXuongKhop from '../assets/images/noi_co_xuong_khop.webp';
 import TaiMuiHong from '../assets/images/tai_mui_hong.webp';
 import Mat from '../assets/images/mat.webp';
 import ImageBooking from '../assets/images/image-booking.png'
+import GoiCoBan from '../assets/images/goi_co_ban.png';
+import AnhBiaGoiKham from '../assets/images/anh_bia_goi_kham.PNG';
 
-export { BsGiaDinh, TieuHoaGanMat, NoiTongQuat, NoiTiet, DaLieu,
-    TimMach, ThanKinh, NoiCoXuongKhop, TaiMuiHong, Mat, ImageBooking }
+export {
+    BsGiaDinh, TieuHoaGanMat, NoiTongQuat, NoiTiet, DaLieu,
+    TimMach, ThanKinh, NoiCoXuongKhop, TaiMuiHong, Mat
+}
+export {ImageBooking}
+export {GoiCoBan, AnhBiaGoiKham}
