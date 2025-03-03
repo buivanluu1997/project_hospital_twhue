@@ -5,6 +5,7 @@ import 'bootstrap/dist/js/bootstrap.min';
 import BookingPage from "./pages/BookingPage";
 import ConfirmPage from "./pages/ConfirmPage";
 import ExaminationService from "./component/examinationService/ExaminationService";
+import ServicePage from "./pages/ServicePage";
 
 function App() {
     return (
@@ -24,7 +25,7 @@ function App() {
                 />
                 <Route
                     path="/service"
-                    element={<ExaminationService/>}
+                    element={<ServicePage/>}
                 />
             </Routes>
         </div>
