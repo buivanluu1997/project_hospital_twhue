@@ -11,6 +11,7 @@ import Mat from '../assets/images/mat.webp';
 import ImageBooking from '../assets/images/image-booking.png'
 
 import AnhBiaGoiKham from '../assets/images/anh_bia_goi_kham.PNG';
+import BannerKhamBenh from '../assets/images/banner_kham_benh.jpg';
 import GoiCoBan from '../assets/images/goi_co_ban.png';
 import GoiNangCao from '../assets/images/goi_nang_cao.png';
 import GoiUuViet from '../assets/images/goi_uu_viet.png';
@@ -24,4 +25,4 @@ export {
     TimMach, ThanKinh, NoiCoXuongKhop, TaiMuiHong, Mat
 }
 export {ImageBooking}
-export {AnhBiaGoiKham, GoiCoBan, GoiNangCao, GoiUuViet, GoiVip, GoiTriAnBoMe, GoiDongHanhCungCon, GoiDoanhNghiep}
+export {BannerKhamBenh, GoiCoBan, GoiNangCao, GoiUuViet, GoiVip, GoiTriAnBoMe, GoiDongHanhCungCon, GoiDoanhNghiep}
