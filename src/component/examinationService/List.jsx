@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from './ExaminationService.module.css';
-import {AnhBiaGoiKham, GoiCoBan, GoiNangCao, GoiUuViet, GoiVip, GoiTriAnBoMe, GoiDongHanhCungCon, GoiDoanhNghiep} from "../../helpers/Image"
+import styles from './list.module.css';
+import {GoiCoBan, GoiNangCao, GoiUuViet, GoiVip, GoiTriAnBoMe, GoiDongHanhCungCon, GoiDoanhNghiep} from "../../helpers/Image"
+import Navbar from "./Navbar";
 
 const service = [
     {
@@ -54,26 +55,27 @@ const service = [
     }
 ];
 
-export function ExaminationService() {
+export function List() {
     return(
         <>
             <div className="h-[65px]"></div>
             <div className="container">
-                <div className={styles.nav}>
-                    <img className={styles.img} src={AnhBiaGoiKham} alt="Gói Khám Sức Khoẻ Tổng Quát"/>
-                    <h1 className={styles.h2}>GÓI KHÁM SỨC KHOẺ TỔNG QUÁT TẠI BỆNH VIỆN QUỐC TẾ TW HUẾ</h1>
-                </div>
+                <Navbar/>
+                <hr/>
                 {/* Danh sách dịch vụ */}
-                <div className="row" style={{marginTop: "30px"}}>
+                <div className="row" style={{marginTop: "20px"}}>
                     {service?.map((item, index) => (
                         <div key={index} className="col-md-4">
                             <div className={`${styles.card} position-relative`}>
                                 {/* Hình ảnh */}
                                 <img src={item.image} className={`${styles.cardImg} card-img-top`} alt={item.title}/>
 
-                                <div className="card-body">
+                                <div className={styles.cardBody}>
                                     <p className={styles.price}>{item.price.toLocaleString("vi-VN")} ₫</p>
-                                    <h4 className="card-title">{item.title}</h4>
+                                    <div className={styles.row}>
+                                        <h4 className={styles.cardTitle}>{item.title}</h4>
+                                        <a href="#" className={`${styles.btnDetail} btn btn-primary`}>Xem chi tiết</a>
+                                    </div>
                                     <p className={styles.cardText}>{item.text}</p>
                                 </div>
                             </div>
@@ -85,4 +87,4 @@ export function ExaminationService() {
     );
 }
 
-export default ExaminationService;
+export default List;
