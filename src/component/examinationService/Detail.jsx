@@ -37,6 +37,7 @@ export function Detail(){
                 <div className={styles.information}>
                     <h3>Thông tin gói khám</h3>
                     <table className={styles.table}>
+                        <thead>
                         <tr>
                             <th rowSpan="2">Stt</th>
                             <th rowSpan="2">Nội dung</th>
@@ -47,6 +48,8 @@ export function Detail(){
                             <th>Nam</th>
                             <th>Nữ</th>
                         </tr>
+                        </thead>
+                        <tbody>
                         <tr>
                             <td className={styles.center}>1</td>
                             <td>Khám nội tổng quát</td>
@@ -184,6 +187,7 @@ export function Detail(){
                             <td className={styles.bold}>1.477.000₫</td>
                             <td></td>
                         </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
